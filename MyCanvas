@@ -1,0 +1,18 @@
+package Draw;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+
+public class MyCanvas extends Canvas {
+	Menu f;
+	public MyCanvas() {
+		this.setBackground(Color.WHITE);
+		
+	}
+	public void paint(Graphics g) {
+ 
+   }
+}
