@@ -1,0 +1,124 @@
+package Draw;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Menu extends JFrame {
+	JFrame frame;
+	JPanel firstPanel;
+	JButton Start;
+	JButton Quit;
+	JButton R;
+	JButton G;
+	JButton B;
+	MyCanvas can;
+	JPanel secondPanel;
+	JButton close;
+	Menu(String text){
+		frame=new JFrame(text);
+	    frame.setVisible(true);
+	    frame.setLayout(null);
+	    
+	    firstPanel=new JPanel();
+	    firstPanel.setLayout(null);
+	    firstPanel.setBackground(new Color(100,30,255));
+	    firstPanel.setVisible(true);
+	    firstPanel.setBounds(0,0,800,500);
+	    frame.add(firstPanel);
+	    
+	    Start=new JButton("START");
+	    Start.setFont(new Font("Arial",Font.BOLD,36));
+	    Start.setBounds(330,210,160,70);
+	    Start.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.black));
+	    Start.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstPanel.setVisible(false);
+				secondPanel.setVisible(true);
+			}
+	    	
+	    });
+	    firstPanel.add(Start);
+	    
+	    Quit=new JButton("QUIT");
+	    Quit.setFont(new Font("Arial",Font.BOLD,22));
+	    Quit.setBounds(650,360,90,70);
+	    Quit.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.black));
+	    Quit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+	    	
+	    });
+	    firstPanel.add(Quit);
+	    
+	    R=new JButton("");
+	    R.setBackground(new Color(255,0,0));
+	    R.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.black));
+	    R.setBounds(60,60,60,60);
+	    R.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstPanel.setBackground(new Color(255,0,0));
+			}
+	    });
+	    firstPanel.add(R);
+	    
+	    G=new JButton("");
+	    G.setBackground(new Color(0,255,0));
+	    G.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.black));
+	    G.setBounds(180,60,60,60);
+	    G.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstPanel.setBackground(new Color(0,255,0));
+			}
+	    });
+	    firstPanel.add(G);
+	    
+	    B=new JButton("");
+	    B.setBackground(new Color(0,0,255));
+	    B.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.black));
+	    B.setBounds(300,60,60,60);
+	    B.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstPanel.setBackground(new Color(0,0,255));
+			}
+	    });
+	    firstPanel.add(B);
+	    
+	    secondPanel=new JPanel();
+	    secondPanel.setLayout(null);
+	    secondPanel.setBackground(new Color(100,30,255));
+	    secondPanel.setVisible(false);
+	    secondPanel.setBounds(0,0,800,500);
+	    frame.add(secondPanel);
+	    
+	    can=new MyCanvas();
+	    can.setBounds(45,100,700,350);
+	    secondPanel.add(can);
+	    
+	    close=new JButton("Close");
+	    close.setFont(new Font("Arial",Font.BOLD,16));
+	    close.setBounds(670,20,80,60);
+	    close.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.black));
+	    close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				secondPanel.setVisible(false);
+				firstPanel.setVisible(true);
+				
+			}
+	    	
+	    });
+	    secondPanel.add(close);
+	    
+	    
+	    frame.setBounds(500,300,800,500);
+	    frame.getContentPane().setBackground(new Color(100,30,255));
+	}
+
+}
