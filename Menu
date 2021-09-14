@@ -113,7 +113,7 @@ public class Menu extends JFrame {
 	    
 	    can=new MyCanvas();
 	    can.setBounds(45,100,700,350);
-	    secondPanel.add(can);
+	   // secondPanel.add(can);
 	    
 	    close=new JButton("Close");
 	    close.setFont(new Font("Arial",Font.BOLD,16));
@@ -167,6 +167,7 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				n=Integer.parseInt(insertNumber.getText());
 				Shape=(String) selectOption.getSelectedItem();
+				secondPanel.add(can);
 				can.draw(n,Shape);
 			}
 	    	
