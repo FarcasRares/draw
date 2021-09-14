@@ -18,7 +18,7 @@ public class MyCanvas extends Canvas {
 		
 	}
 	public void paint(Graphics g) {
-		if (canvasShape.compareTo("Square") != 0)
+		if (canvasShape.equals("Square"))
 		 {
 			 int i,x,y;
 			 for(i=0;i<numberOfShape;i++) {
