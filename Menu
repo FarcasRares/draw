@@ -4,11 +4,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Menu extends JFrame {
 	JFrame frame;
@@ -21,6 +26,14 @@ public class Menu extends JFrame {
 	MyCanvas can;
 	JPanel secondPanel;
 	JButton close;
+	JLabel number;
+	JTextField insertNumber;
+	String options[]= {"--","Circle","Square"};
+	JComboBox selectOption;
+	JLabel shape;
+	JButton Draw;
+	int n;
+	String Shape;
 	Menu(String text){
 		frame=new JFrame(text);
 	    frame.setVisible(true);
@@ -116,6 +129,49 @@ public class Menu extends JFrame {
 	    });
 	    secondPanel.add(close);
 	    
+	    number=new JLabel("Insert the number of shapes :");
+	    number.setFont(new Font("Arial",Font.BOLD,14));
+	    number.setBounds(20,20,210,50);
+	    number.setForeground(Color.black);
+	    secondPanel.add(number);
+	    
+	    insertNumber=new JTextField();
+	    insertNumber.setBounds(235,30,40,30);
+	    insertNumber.setFont(new Font("Arial",Font.BOLD,14));
+	    insertNumber.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.black));
+	    insertNumber.addKeyListener( new KeyAdapter() {
+        	public void keyTyped(KeyEvent ke) {
+        		char c=ke.getKeyChar();
+        		if ((c<'0') || (c>'9') && (c!= KeyEvent.VK_BACK_SPACE)) ke.consume();
+        	}
+        	
+        });
+	    secondPanel.add(insertNumber);
+	    
+	    shape=new JLabel("Select the shape :");
+	    shape.setFont(new Font("Arial",Font.BOLD,14));
+	    shape.setBounds(290,20,140,50);
+	    shape.setForeground(Color.black);
+	    secondPanel.add(shape);
+	    
+	    selectOption=new JComboBox(options);
+	    selectOption.setFont(new Font("Arial",Font.BOLD,14));
+	    selectOption.setBounds(420,30,90,30);
+	    secondPanel.add(selectOption);
+	    
+	    Draw=new JButton("Draw");
+	    Draw.setFont(new Font("Arial",Font.BOLD,16));
+	    Draw.setBounds(580,20,80,60);
+	    Draw.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.black));
+	    Draw.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				n=Integer.parseInt(insertNumber.getText());
+				Shape=(String) selectOption.getSelectedItem();
+				can.draw(n,Shape);
+			}
+	    	
+	    });
+	    secondPanel.add(Draw);
 	    
 	    frame.setBounds(500,300,800,500);
 	    frame.getContentPane().setBackground(new Color(100,30,255));
