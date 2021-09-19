@@ -29,11 +29,15 @@ public class Menu extends JFrame {
 	JLabel number;
 	JTextField insertNumber;
 	String options[]= {"--","Circle","Square"};
+	String options2[]= {"--","Fill","Empty"};
 	JComboBox selectOption;
+	JComboBox FillEmpty;
+	JLabel FillOrEmpty;
 	JLabel shape;
 	JButton Draw;
 	int n;
-	String Shape;
+	String Shape,Type;
+	JPanel blank;
 	Menu(String text){
 		frame=new JFrame(text);
 	    frame.setVisible(true);
@@ -78,6 +82,7 @@ public class Menu extends JFrame {
 	    R.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				firstPanel.setBackground(new Color(255,0,0));
+				secondPanel.setBackground(new Color(255,0,0));
 			}
 	    });
 	    firstPanel.add(R);
@@ -89,6 +94,7 @@ public class Menu extends JFrame {
 	    G.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				firstPanel.setBackground(new Color(0,255,0));
+				secondPanel.setBackground(new Color(0,255,0));
 			}
 	    });
 	    firstPanel.add(G);
@@ -100,6 +106,7 @@ public class Menu extends JFrame {
 	    B.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				firstPanel.setBackground(new Color(0,0,255));
+				secondPanel.setBackground(new Color(0,0,255));
 			}
 	    });
 	    firstPanel.add(B);
@@ -113,7 +120,11 @@ public class Menu extends JFrame {
 	    
 	    can=new MyCanvas();
 	    can.setBounds(45,100,700,350);
-	   // secondPanel.add(can);
+	    
+	    blank=new JPanel();
+	    blank.setBounds(45,100,700,350);
+	    blank.setBackground(new Color(255,255,255));
+	    secondPanel.add(blank);
 	    
 	    close=new JButton("Close");
 	    close.setFont(new Font("Arial",Font.BOLD,16));
@@ -159,6 +170,17 @@ public class Menu extends JFrame {
 	    selectOption.setBounds(420,30,90,30);
 	    secondPanel.add(selectOption);
 	    
+	    FillOrEmpty=new JLabel("Select the type :");
+	    FillOrEmpty.setFont(new Font("Arial",Font.BOLD,14));
+	    FillOrEmpty.setForeground(new Color(0,0,0));
+	    FillOrEmpty.setBounds(290,50,140,50);
+	    secondPanel.add(FillOrEmpty);
+	    
+	    FillEmpty=new JComboBox(options2);
+	    FillEmpty.setFont(new Font("Arial",Font.BOLD,14));
+	    FillEmpty.setBounds(420,60,90,30);
+	    secondPanel.add(FillEmpty);
+	    
 	    Draw=new JButton("Draw");
 	    Draw.setFont(new Font("Arial",Font.BOLD,16));
 	    Draw.setBounds(580,20,80,60);
@@ -167,12 +189,16 @@ public class Menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				n=Integer.parseInt(insertNumber.getText());
 				Shape=(String) selectOption.getSelectedItem();
+				Type=(String)  FillEmpty.getSelectedItem();
 				secondPanel.add(can);
-				can.draw(n,Shape);
+				can.draw(n,Shape,Type);
+				blank.setVisible(false);
 			}
 	    	
 	    });
 	    secondPanel.add(Draw);
+	    
+	    
 	    
 	    frame.setBounds(500,300,800,500);
 	    frame.getContentPane().setBackground(new Color(100,30,255));
