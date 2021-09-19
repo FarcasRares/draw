@@ -23,6 +23,8 @@ public class Menu extends JFrame {
 	JButton R;
 	JButton G;
 	JButton B;
+	JButton O;
+	JButton P;
 	MyCanvas can;
 	JPanel secondPanel;
 	JButton close;
@@ -110,6 +112,31 @@ public class Menu extends JFrame {
 			}
 	    });
 	    firstPanel.add(B);
+	    
+	    O=new JButton("");
+	    O.setBackground(new Color(255,165,0));
+	    O.setBorder(BorderFactory.createMatteBorder(2,2,2,2,Color.black));
+	    O.setBounds(420,60,60,60);
+	    O.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				firstPanel.setBackground(new Color(255,165,0));
+				secondPanel.setBackground(new Color(255,165,0));
+			}
+	    });
+	    firstPanel.add(O);
+	    
+	    P=new JButton("");
+	    P.setBackground(new Color(255,0,191));
+	    P.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.black));
+	    P.setBounds(540,60,60,60);
+	    P.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			firstPanel.setBackground(new Color(255,0,191));
+			secondPanel.setBackground(new Color(255,0,191));
+			} 	
+	    });
+	    firstPanel.add(P);
+	 
 	    
 	    secondPanel=new JPanel();
 	    secondPanel.setLayout(null);
