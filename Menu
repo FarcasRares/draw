@@ -226,7 +226,6 @@ public class Menu extends JFrame {
 	    secondPanel.add(Draw);
 	    
 	    
-	    
 	    frame.setBounds(500,300,800,500);
 	    frame.getContentPane().setBackground(new Color(100,30,255));
 	}
