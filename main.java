@@ -6,5 +6,4 @@ public class main {
 		Menu application=new Menu("Draw application");
 
 	}
-
 }
